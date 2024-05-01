@@ -1,29 +1,30 @@
 const tasks = [
-  {
-    libelle: "Tache numéro 1",
-    completed: 1,
-  },
-  {
-    libelle: "Tache numéro 2",
-    completed: 0,
-  },
-  {
-    libelle: "Tache numéro 3",
-    completed: 0,
-  },
-  {
-    libelle: "Tache numéro 4",
-    completed: 0,
-  },
-  {
-    libelle: "Tache numéro 5",
-    completed: 0,
-  },
+  //   {
+  //     libelle: "Tache numéro 1",
+  //     completed: 1,
+  //   },
+  //   {
+  //     libelle: "Tache numéro 2",
+  //     completed: 0,
+  //   },
+  //   {
+  //     libelle: "Tache numéro 3",
+  //     completed: 0,
+  //   },
+  //   {
+  //     libelle: "Tache numéro 4",
+  //     completed: 0,
+  //   },
+  //   {
+  //     libelle: "Tache numéro 5",
+  //     completed: 0,
+  //   },
 ];
 
 let milieuMidListe = document.querySelector(".milieu-mid-liste");
 let addCheck = document.querySelector(".add-check");
 let addInput = document.querySelector(".add-input");
+let nbrItems = document.querySelector(".nbr-items");
 
 function loadData(tasks) {
   tasks.forEach((task) => {
@@ -38,6 +39,7 @@ function loadData(tasks) {
           `;
     milieuMidListe.insertAdjacentHTML("afterbegin", templateTodoList);
   });
+  nbrItems.innerText = tasks.length + " Tâches";
 }
 
 function addNewData(task) {
@@ -80,6 +82,7 @@ addInput.addEventListener("keydown", function (e) {
       };
       addNewData(task);
       tasks.push(task);
+      nbrItems.innerText = tasks.length + " Tâches";
       addInput.value = "";
     }
   }
@@ -88,6 +91,7 @@ addInput.addEventListener("keydown", function (e) {
 loadData(tasks);
 
 let listChecks = document.querySelectorAll(".list-check");
+
 listChecks.forEach((listCheck) => {
   listCheck.addEventListener("click", function (e) {
     listCheck.classList.toggle("check-back");
