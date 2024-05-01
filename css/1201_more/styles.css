@@ -174,3 +174,18 @@
   height: 70%;
   position: absolute;
 }
+
+.delete-icon {
+  background-image: url("../../images/icon-cross.svg");
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 20px;
+  height: 20px;
+  visibility: hidden;
+  cursor: pointer;
+}
+
+.liste-element:hover .delete-icon {
+  visibility: visible;
+}

@@ -34,7 +34,7 @@ function loadData(tasks) {
           <i class="${task.completed ? "check-icon" : ""}"></i>
           </span>
           <span class="${task.completed ? "barrer" : ""}">${task.libelle}</span>
-          <span>X</span>
+          <span class="delete-icon"></span>
           </div>
           `;
     milieuMidListe.insertAdjacentHTML("afterbegin", templateTodoList);
@@ -49,17 +49,25 @@ function addNewData(task) {
   <i class="${task.completed ? "check-icon" : ""}"></i>
   </span>
   <span class="${task.completed ? "barrer" : ""}">${task.libelle}</span>
-  <span>X</span>
+  <span class="delete-icon"></span>
   </div>
   `;
   milieuMidListe.insertAdjacentHTML("afterbegin", templateTodoList);
   let listCheck = milieuMidListe.firstElementChild.querySelector(".list-check");
+  let deleteToList =
+    milieuMidListe.firstElementChild.querySelector(".delete-icon");
   milieuMidListe.firstElementChild.addEventListener("click", function (e) {
     listCheck.classList.toggle("check-back");
     let i_check = listCheck.firstElementChild;
     let libelle_check = listCheck.nextElementSibling;
     i_check.classList.toggle("check-icon");
     libelle_check.classList.toggle("barrer");
+  });
+
+  deleteToList.addEventListener("click", function (e) {
+    milieuMidListe.firstElementChild.remove();
+    tasks.pop();
+    nbrItems.innerText = tasks.length + " Tâches";
   });
 }
 
@@ -101,3 +109,7 @@ listChecks.forEach((listCheck) => {
     libelle_check.classList.toggle("barrer");
   });
 });
+
+let parentElement = document.querySelector(".parent-element");
+let childElementToDelete = document.querySelector(".child-element-to-delete");
+parentElement.removeChild(childElementToDelete);
