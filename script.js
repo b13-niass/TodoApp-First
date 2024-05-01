@@ -29,7 +29,9 @@ function loadData(tasks) {
   tasks.forEach((task) => {
     let templateTodoList = `
           <div class="liste-element">
-          <span class="list-check"></span>
+          <span class="list-check ${task.completed ? "check-back" : ""}">
+          <i class="${task.completed ? "check-icon" : ""}"></i>
+          </span>
           <span class="${task.completed ? "barrer" : ""}">${task.libelle}</span>
           <span>X</span>
           </div>
@@ -40,15 +42,23 @@ function loadData(tasks) {
 
 function addNewData(task) {
   let templateTodoList = `
-            <div class="liste-element">
-            <span class="list-check"></span>
-            <span class="${task.completed ? "barrer" : ""}">${
-    task.libelle
-  }</span>
-            <span>X</span>
-            </div>
-            `;
+  <div class="liste-element">
+  <span class="list-check ${task.completed ? "check-back" : ""}">
+  <i class="${task.completed ? "check-icon" : ""}"></i>
+  </span>
+  <span class="${task.completed ? "barrer" : ""}">${task.libelle}</span>
+  <span>X</span>
+  </div>
+  `;
   milieuMidListe.insertAdjacentHTML("afterbegin", templateTodoList);
+  let listCheck = milieuMidListe.firstElementChild.querySelector(".list-check");
+  milieuMidListe.firstElementChild.addEventListener("click", function (e) {
+    listCheck.classList.toggle("check-back");
+    let i_check = listCheck.firstElementChild;
+    let libelle_check = listCheck.nextElementSibling;
+    i_check.classList.toggle("check-icon");
+    libelle_check.classList.toggle("barrer");
+  });
 }
 
 function addCheckStatus() {
@@ -76,3 +86,14 @@ addInput.addEventListener("keydown", function (e) {
 });
 
 loadData(tasks);
+
+let listChecks = document.querySelectorAll(".list-check");
+listChecks.forEach((listCheck) => {
+  listCheck.addEventListener("click", function (e) {
+    listCheck.classList.toggle("check-back");
+    let i_check = listCheck.firstElementChild;
+    let libelle_check = listCheck.nextElementSibling;
+    i_check.classList.toggle("check-icon");
+    libelle_check.classList.toggle("barrer");
+  });
+});
