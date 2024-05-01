@@ -1,0 +1,46 @@
+@import "./320_480/styles.css" screen and (max-width: 480px);
+@import "./481_768/styles.css" screen and (min-width: 481px) and
+  (max-width: 768px);
+@import "./769_1024/styles.css" screen and (min-width: 769px) and
+  (max-width: 1024px);
+@import "./1025_1200/styles.css" screen and (min-width: 1025px) and
+  (max-width: 1200px);
+@import "./1201_more/styles.css" screen and (min-width: 1201px);
+
+:root {
+  --couleur-primaire: #f5f5f5;
+  --couleur-secondaire: #009186;
+  --border-radius-primaire: 7px;
+  --couleur-text-opacity: rgba(0, 0, 0, 0.7);
+  --default-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.1);
+  --alert-danger-background: #f8ced7;
+  --alert-danger-text: darkred;
+  font-size: 16px;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: "Josefin Sans";
+  src: url("../fonts/Josefin_Sans/JosefinSans-VariableFont_wght.ttf");
+  font-weight: 400 700;
+  font-style: normal;
+}
+body * {
+  /* border: 1px solid black; */
+}
+
+body {
+  font-family: "Josefin Sans", "Courier New";
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  height: 100vh;
+  width: 100%;
+  font-size: 18px;
+  color: hsl(234, 39%, 85%);
+}
